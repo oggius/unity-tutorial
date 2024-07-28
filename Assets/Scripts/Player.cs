@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
+
+    public static Player Instance { get; private set; }
+
+    public event EventHandler<SelectedCounterChangedEventArgs> selectedCounterChanged;
+    public class SelectedCounterChangedEventArgs {
+        public ClearCounter selectedCounter;
+    }
+
     [SerializeField] private float moveSpeed = 6f;
     private float rotateSpeed = 15f;
     private float playerRadius = .7f;
@@ -11,9 +19,21 @@ public class Player : MonoBehaviour
 
     private Vector3 lastInteractDirection;
 
+    private ClearCounter selectedCounter;
+
     [SerializeField] private LayerMask counterLayerMask;
     [SerializeField] private GameInput gameInput;
     private bool isWalking;
+
+    private void Awake()
+    {
+        if (Instance != null) {
+            Debug.LogError("There are multiple player instances");
+        }
+
+        Instance = this;
+        Debug.Log("Instance assigned");
+    }
 
     private void Start()
     {
@@ -22,13 +42,15 @@ public class Player : MonoBehaviour
 
     private void GameInput_interactAction(object sender, System.EventArgs e)
     {
-        HandleInteractions();
+        if (selectedCounter != null) {
+            selectedCounter.Interact();
+        }
     }
 
     private void Update()
     {
         HandleMovement();
-        //HandleInteractions();
+        HandleInteractions();
     }
 
     // returns true if the player is currently walking
@@ -101,7 +123,6 @@ public class Player : MonoBehaviour
     // handles interactions logic
     private void HandleInteractions() {
         float interactionDistance = 2f;
-        RaycastHit interactedObject = new RaycastHit();
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
 
         // explicit cast to transform.position's Vector3 type
@@ -112,12 +133,26 @@ public class Player : MonoBehaviour
         }
 
         // TODO: get deeper into Layers concept
+        RaycastHit interactedObject = new RaycastHit();
         if (Physics.Raycast(transform.position, lastInteractDirection, out interactedObject, interactionDistance, counterLayerMask)) {
             if (interactedObject.transform.TryGetComponent(out ClearCounter clearCounter)) {
-                clearCounter.Interact();
+                if (selectedCounter != clearCounter) {
+                    SetSelectedCounter(clearCounter);
+                }
+            } else {
+                SetSelectedCounter(null);
             }
         } else {
-            Debug.Log("No interaction");
+            SetSelectedCounter(null);
         }
+    }
+
+    // sets selected counter
+    private void SetSelectedCounter(ClearCounter counter) {
+        selectedCounter = counter;
+
+        selectedCounterChanged?.Invoke(this, new SelectedCounterChangedEventArgs {
+            selectedCounter = selectedCounter
+        });
     }
 }
