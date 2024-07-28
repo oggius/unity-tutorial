@@ -9,17 +9,26 @@ public class Player : MonoBehaviour
     private float playerRadius = .7f;
     private float playerHeight = 2f;
 
-    private Vector3 lastIneractDirection;
+    private Vector3 lastInteractDirection;
 
     [SerializeField] private LayerMask counterLayerMask;
     [SerializeField] private GameInput gameInput;
     private bool isWalking;
-     
+
+    private void Start()
+    {
+        gameInput.interactAction += GameInput_interactAction;
+    }
+
+    private void GameInput_interactAction(object sender, System.EventArgs e)
+    {
+        HandleInteractions();
+    }
+
     private void Update()
     {
         HandleMovement();
-        HandleInteractions();
-
+        //HandleInteractions();
     }
 
     // returns true if the player is currently walking
@@ -99,11 +108,11 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
 
         if (moveDirection != Vector3.zero) {
-            lastIneractDirection = moveDirection;
+            lastInteractDirection = moveDirection;
         }
 
         // TODO: get deeper into Layers concept
-        if (Physics.Raycast(transform.position, lastIneractDirection, out interactedObject, interactionDistance, counterLayerMask)) {
+        if (Physics.Raycast(transform.position, lastInteractDirection, out interactedObject, interactionDistance, counterLayerMask)) {
             if (interactedObject.transform.TryGetComponent(out ClearCounter clearCounter)) {
                 clearCounter.Interact();
             }

@@ -1,14 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameInput : MonoBehaviour
 {
+    public event EventHandler interactAction;
+
     private PlayerInputActions inputActions;
+
     public void Awake()
     {
         inputActions = new PlayerInputActions();
         inputActions.Player.Enable();
+
+        inputActions.Player.Interact.performed += Interact_performed;
+    }
+
+    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        interactAction?.Invoke(this, EventArgs.Empty);
+        Debug.Log("Action attempted");
     }
 
     // returns normalized input vector
