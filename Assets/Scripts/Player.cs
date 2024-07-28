@@ -8,17 +8,35 @@ public class Player : MonoBehaviour
     private float rotateSpeed = 15f;
     private float playerRadius = .7f;
     private float playerHeight = 2f;
- 
 
+    private Vector3 lastIneractDirection;
+
+    [SerializeField] private LayerMask counterLayerMask;
     [SerializeField] private GameInput gameInput;
     private bool isWalking;
      
     private void Update()
     {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized(); 
-        
+        HandleMovement();
+        HandleInteractions();
+
+    }
+
+    // returns true if the player is currently walking
+    public bool IsWalking()
+    {
+        return isWalking;
+    }
+
+    // handles movement logic
+    private void HandleMovement() {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
         // explicit cast to transform.position's Vector3 type
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
+
+        // rotate player to corresponding direction
+        transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
 
         float moveDistance = moveSpeed * Time.deltaTime;
 
@@ -66,18 +84,31 @@ public class Player : MonoBehaviour
             // change position (move)
             transform.position += moveDirection * moveDistance;
         }
-        
-
-        // rotate player to corresponding direction
-        transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
 
         // detect if the player is walking
-        isWalking = moveDirection != Vector3.zero; 
+        isWalking = moveDirection != Vector3.zero;
     }
 
-    // returns true if the player is currently walking
-    public bool IsWalking()
-    {
-        return isWalking;
+    // handles interactions logic
+    private void HandleInteractions() {
+        float interactionDistance = 2f;
+        RaycastHit interactedObject = new RaycastHit();
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+        // explicit cast to transform.position's Vector3 type
+        Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
+
+        if (moveDirection != Vector3.zero) {
+            lastIneractDirection = moveDirection;
+        }
+
+        // TODO: get deeper into Layers concept
+        if (Physics.Raycast(transform.position, lastIneractDirection, out interactedObject, interactionDistance, counterLayerMask)) {
+            if (interactedObject.transform.TryGetComponent(out ClearCounter clearCounter)) {
+                clearCounter.Interact();
+            }
+        } else {
+            Debug.Log("No interaction");
+        }
     }
 }
