@@ -6,30 +6,30 @@ public class KitchenObject : MonoBehaviour
 {
     [SerializeField] KitchenObjectSO kitchenObjectSO;
 
-    private ClearCounter clearCounter;
+    private IKitchenObjectHolder holder;
 
     public KitchenObjectSO GetKitchenObjectSO() {
         return kitchenObjectSO;
     }
 
-    public void SetClearCounter(ClearCounter newCounter) {
-        if (this.clearCounter != null) {
-            this.clearCounter.ClearPlacedObject();
+    public void SetHolder(IKitchenObjectHolder newHolder) {
+        if (this.holder != null) {
+            this.holder.ReleaseHeldObject();
         }
 
-        if (newCounter.HasPlacedObject()) {
-            Debug.LogWarning("New counter already has kitchen object");
-            return;
+        if (newHolder.HasHeldObject()) {
+            Debug.LogWarning("New holder already has kitchen object");
         }
 
-        this.clearCounter = newCounter;
-        this.clearCounter.SetPlacedObject(this);
+        this.holder = newHolder;
+        this.holder.ObtainKitchenObject(this);
 
-        transform.parent = newCounter.GetPlacementPoint().transform;
+        // place visual into the holding point
+        transform.parent = newHolder.GetHoldingPoint().transform;
         transform.localPosition = Vector3.zero;
     }
 
-    public ClearCounter GetClearCounter() {
-        return this.clearCounter;
+    public IKitchenObjectHolder GetHolder() {
+        return this.holder;
     }
 }

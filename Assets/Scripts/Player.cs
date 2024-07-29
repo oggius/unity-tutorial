@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IKitchenObjectHolder {
 
     public static Player Instance { get; private set; }
 
@@ -25,6 +25,9 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameInput gameInput;
     private bool isWalking;
 
+    private KitchenObject heldKitchenObject;
+    [SerializeField] private GameObject holdingPoint;
+
     private void Awake()
     {
         if (Instance != null) {
@@ -43,7 +46,7 @@ public class Player : MonoBehaviour {
     private void GameInput_interactAction(object sender, System.EventArgs e)
     {
         if (selectedCounter != null) {
-            selectedCounter.Interact();
+            selectedCounter.Interact(this);
         }
     }
 
@@ -154,5 +157,30 @@ public class Player : MonoBehaviour {
         selectedCounterChanged?.Invoke(this, new SelectedCounterChangedEventArgs {
             selectedCounter = selectedCounter
         });
+    }
+
+    public void ObtainKitchenObject(KitchenObject kitchenObject)
+    {
+        this.heldKitchenObject = kitchenObject;
+    }
+
+    public KitchenObject GetHeldObject()
+    {
+        return heldKitchenObject;
+    }
+
+    public void ReleaseHeldObject()
+    {
+        heldKitchenObject = null;
+    }
+
+    public bool HasHeldObject()
+    {
+        return heldKitchenObject == null;
+    }
+
+    public GameObject GetHoldingPoint()
+    {
+        return GetHoldingPoint();
     }
 }

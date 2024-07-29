@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour
+public class ClearCounter : MonoBehaviour, IKitchenObjectHolder
 {
     [SerializeField] private KitchenObjectSO kitchenObject;
     [SerializeField] private GameObject topCounterPoint;
@@ -16,44 +16,37 @@ public class ClearCounter : MonoBehaviour
     {
         if (testing && Input.GetKeyDown(KeyCode.T)) {
             Debug.Log("Testing mode");
-            placedObject.SetClearCounter(secondClearCounter);
+            placedObject.SetHolder(secondClearCounter);
         }
     }
 
-    public void Interact() {
+    public void Interact(Player player) {
         if (placedObject == null) {
             // instantiate product
             GameObject kitchenObjectInstance = Instantiate(kitchenObject.prefab, topCounterPoint.transform);
-            kitchenObjectInstance.GetComponent<KitchenObject>().SetClearCounter(this);
-            //// fix the position (TODO understand why it is not 0 by default)
-            //kitchenObjectInstance.transform.localPosition = Vector3.zero;
-
-            //// set placed object
-            //placedObject = kitchenObjectInstance.GetComponent<KitchenObject>();
-
-            //placedObject.SetClearCounter(this);
+            kitchenObjectInstance.GetComponent<KitchenObject>().SetHolder(this);
         } else {
-            Debug.Log("Placed on " + placedObject.GetClearCounter());
+            placedObject.SetHolder(player);
         }
     }
 
-    public GameObject GetPlacementPoint() {
+    public GameObject GetHoldingPoint() {
         return this.topCounterPoint;
     }
 
-    public void SetPlacedObject(KitchenObject kitchenObject) {
+    public void ObtainKitchenObject(KitchenObject kitchenObject) {
         this.placedObject = kitchenObject;
     }
 
-    public KitchenObject GetPlacedObject() {
+    public KitchenObject GetHeldObject() {
         return placedObject;
     }
 
-    public void ClearPlacedObject() {
+    public void ReleaseHeldObject() {
         this.placedObject = null;
     }
 
-    public bool HasPlacedObject() {
+    public bool HasHeldObject() {
         return placedObject != null;
     }
 }
