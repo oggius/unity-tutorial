@@ -13,12 +13,13 @@ public class KitchenObject : MonoBehaviour
     }
 
     public void SetHolder(IKitchenObjectHolder newHolder) {
-        if (this.holder != null) {
-            this.holder.ReleaseHeldObject();
+        if (newHolder.HasHeldObject()) {
+            Debug.Log("New holder already has kitchen object" + newHolder.GetHeldObject());
+            return;
         }
 
-        if (newHolder.HasHeldObject()) {
-            Debug.LogWarning("New holder already has kitchen object");
+        if (this.holder != null) {
+            this.holder.ReleaseHeldObject();
         }
 
         this.holder = newHolder;

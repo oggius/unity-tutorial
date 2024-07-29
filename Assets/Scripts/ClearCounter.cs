@@ -22,9 +22,13 @@ public class ClearCounter : MonoBehaviour, IKitchenObjectHolder
 
     public void Interact(Player player) {
         if (placedObject == null) {
-            // instantiate product
-            GameObject kitchenObjectInstance = Instantiate(kitchenObject.prefab, topCounterPoint.transform);
-            kitchenObjectInstance.GetComponent<KitchenObject>().SetHolder(this);
+            if (player.HasHeldObject()) {
+                player.GetHeldObject().SetHolder(this);
+            } else {
+                // instantiate product
+                GameObject kitchenObjectInstance = Instantiate(kitchenObject.prefab, topCounterPoint.transform);
+                kitchenObjectInstance.GetComponent<KitchenObject>().SetHolder(this);
+            }
         } else {
             placedObject.SetHolder(player);
         }

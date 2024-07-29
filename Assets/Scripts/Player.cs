@@ -176,11 +176,11 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
 
     public bool HasHeldObject()
     {
-        return heldKitchenObject == null;
+        return heldKitchenObject != null;
     }
 
     public GameObject GetHoldingPoint()
     {
-        return GetHoldingPoint();
+        return holdingPoint;
     }
 }
