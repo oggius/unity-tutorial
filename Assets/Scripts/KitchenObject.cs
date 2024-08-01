@@ -42,4 +42,9 @@ public class KitchenObject : MonoBehaviour
     public IKitchenObjectHolder GetHolder() {
         return this.holder;
     }
+
+    public void DestroySelf() {
+        holder.ReleaseHeldObject();
+        Destroy(gameObject);
+    }
 }
