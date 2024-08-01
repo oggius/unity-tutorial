@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
 
     public event EventHandler<SelectedCounterChangedEventArgs> selectedCounterChanged;
     public class SelectedCounterChangedEventArgs {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
     }
 
     [SerializeField] private float moveSpeed = 6f;
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
 
     private Vector3 lastInteractDirection;
 
-    private ClearCounter selectedCounter;
+    private BaseCounter selectedCounter;
 
     [SerializeField] private LayerMask counterLayerMask;
     [SerializeField] private GameInput gameInput;
@@ -35,7 +35,6 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
         }
 
         Instance = this;
-        Debug.Log("Instance assigned");
     }
 
     private void Start()
@@ -138,9 +137,9 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
         // TODO: get deeper into Layers concept
         RaycastHit interactedObject = new RaycastHit();
         if (Physics.Raycast(transform.position, lastInteractDirection, out interactedObject, interactionDistance, counterLayerMask)) {
-            if (interactedObject.transform.TryGetComponent(out ClearCounter clearCounter)) {
-                if (selectedCounter != clearCounter) {
-                    SetSelectedCounter(clearCounter);
+            if (interactedObject.transform.TryGetComponent(out BaseCounter counter)) {
+                if (selectedCounter != counter) {
+                    SetSelectedCounter(counter);
                 }
             } else {
                 SetSelectedCounter(null);
@@ -151,7 +150,7 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
     }
 
     // sets selected counter
-    private void SetSelectedCounter(ClearCounter counter) {
+    private void SetSelectedCounter(BaseCounter counter) {
         selectedCounter = counter;
 
         selectedCounterChanged?.Invoke(this, new SelectedCounterChangedEventArgs {

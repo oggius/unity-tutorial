@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelectedCounterVisual : MonoBehaviour
 {
-    [SerializeField] private ClearCounter counter;
+    [SerializeField] private BaseCounter counter;
     [SerializeField] private GameObject counterVisual;
 
     // Start is called before the first frame update

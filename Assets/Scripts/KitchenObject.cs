@@ -12,9 +12,9 @@ public class KitchenObject : MonoBehaviour
         return kitchenObjectSO;
     }
 
-    public void SetHolder(IKitchenObjectHolder newHolder) {
+    public void ChangeHolder(IKitchenObjectHolder newHolder) {
         if (newHolder.HasHeldObject()) {
-            Debug.Log("New holder already has kitchen object" + newHolder.GetHeldObject());
+            Debug.Log("New holder already has kitchen object " + newHolder.GetHeldObject());
             return;
         }
 
@@ -22,8 +22,17 @@ public class KitchenObject : MonoBehaviour
             this.holder.ReleaseHeldObject();
         }
 
+        newHolder.ObtainKitchenObject(this);
         this.holder = newHolder;
-        this.holder.ObtainKitchenObject(this);
+
+        // place visual into the holding point
+        transform.parent = newHolder.GetHoldingPoint().transform;
+        transform.localPosition = Vector3.zero;
+    }
+
+    public void SetHolder(IKitchenObjectHolder newHolder) {
+        newHolder.ObtainKitchenObject(this);
+        this.holder = newHolder;
 
         // place visual into the holding point
         transform.parent = newHolder.GetHoldingPoint().transform;

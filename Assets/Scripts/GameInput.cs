@@ -20,7 +20,6 @@ public class GameInput : MonoBehaviour
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         interactAction?.Invoke(this, EventArgs.Empty);
-        Debug.Log("Action attempted");
     }
 
     // returns normalized input vector
