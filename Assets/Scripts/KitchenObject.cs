@@ -47,4 +47,21 @@ public class KitchenObject : MonoBehaviour
         holder.ReleaseHeldObject();
         Destroy(gameObject);
     }
+
+    // spawns kitchen object and assigns it to the holder
+    public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectHolder holder) {
+        GameObject kitchenObjectInstance = Instantiate(kitchenObjectSO.prefab);
+        KitchenObject kitchenObject = kitchenObjectInstance.GetComponent<KitchenObject>();
+        kitchenObject.SetHolder(holder);
+
+        return kitchenObject;
+    }
+
+    public bool IsCuttable() {
+        return kitchenObjectSO.canCut;
+    }
+
+    public KitchenObjectSO GetCutsInto() {
+        return kitchenObjectSO.cutsInto;
+    }
 }

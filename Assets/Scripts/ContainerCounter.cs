@@ -13,8 +13,7 @@ public class ContainerCounter : BaseCounter
         if (!player.HasHeldObject()) {
             Debug.Log("Spawn object " + kitchenObject);
             // instantiate product
-            GameObject kitchenObjectInstance = Instantiate(kitchenObject.prefab);
-            kitchenObjectInstance.GetComponent<KitchenObject>().SetHolder(player);
+            KitchenObject.SpawnKitchenObject(kitchenObject, player);
             playerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
     }

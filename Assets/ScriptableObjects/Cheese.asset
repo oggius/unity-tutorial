@@ -15,3 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 3437737236658819098, guid: 577eba7245e3d47b2b7beadbafdcd22d, type: 3}
   sprite: {fileID: 21300000, guid: da2d04fe27b94e34ea0b624569b48a6f, type: 3}
   objectName: Cheese
+  cuttingSeconds: 2
+  canCut: 1
+  cutsInto: {fileID: 11400000, guid: 17d793fb074c44b0dad17d9e4686669c, type: 2}

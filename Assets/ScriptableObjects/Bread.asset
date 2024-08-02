@@ -15,3 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 3437737236658819098, guid: eb2fd0fb4cf3544138cdfeb1b753217b, type: 3}
   sprite: {fileID: 21300000, guid: 77b28124b8bda494381c80bd5aa42c22, type: 3}
   objectName: Bread
+  cutInto: 0

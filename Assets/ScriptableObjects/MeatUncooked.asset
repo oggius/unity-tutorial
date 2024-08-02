@@ -15,3 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 3437737236658819098, guid: 3fb4aa55933924af2a6654e1f0287bc8, type: 3}
   sprite: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
   objectName: MeatUncooked
+  cutInto: 0

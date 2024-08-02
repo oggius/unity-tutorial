@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00e1a138fec544c258062e576d4cf5a1, type: 3}
-  m_Name: Cabbage
+  m_Name: CheeseSlices
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3437737236658819098, guid: ed22e945ce6434ccb9784baab4ddf33a, type: 3}
-  sprite: {fileID: 21300000, guid: e1c23b5aded59d84da30738d3267a6c9, type: 3}
-  objectName: Cabbage
-  cuttingSeconds: 3
-  canCut: 1
-  cutsInto: {fileID: 11400000, guid: 10c2132fdffca4a09a7a946cb3e0feda, type: 2}
+  prefab: {fileID: 3437737236658819098, guid: cefab16bb57254256bb9c921420b9717, type: 3}
+  sprite: {fileID: 21300000, guid: 549cb4f2b86d1b84d8cd41c1cfde26c8, type: 3}
+  objectName: Cheese Slices
+  cuttingSeconds: 0
+  canCut: 0
+  cutsInto: {fileID: 0}
