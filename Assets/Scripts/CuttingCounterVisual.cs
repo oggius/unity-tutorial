@@ -30,11 +30,5 @@ public class CuttingCounterVisual : MonoBehaviour
     {
         Debug.Log("Animation started");
         animator.SetBool(IS_CUTTING, true);
-        animator.SetTrigger("Cut");
-    }
-
-    private void Counter_playerGrabbedObject(object sender, System.EventArgs e)
-    {
-        
     }
 }
