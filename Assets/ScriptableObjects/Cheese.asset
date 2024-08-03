@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abede97ab44f244d9ac9497caf4e657f, type: 3}
   m_Name: Cheese
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  sprite: {fileID: 0}
-  objectName: 
-  cuttingSeconds: 0
-  canCut: 0
-  cutsInto: {fileID: 0}
+  prefab: {fileID: 3437737236658819098, guid: 577eba7245e3d47b2b7beadbafdcd22d, type: 3}
+  sprite: {fileID: 21300000, guid: da2d04fe27b94e34ea0b624569b48a6f, type: 3}
+  objectName: Cheese
+  cuttingSeconds: 2
+  canCut: 1
+  cutsInto: {fileID: 11400000, guid: ef90aff55a4034e59bc1323885a78779, type: 2}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abede97ab44f244d9ac9497caf4e657f, type: 3}
   m_Name: CabbageSlices
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  sprite: {fileID: 0}
-  objectName: 
+  prefab: {fileID: 3437737236658819098, guid: 57860873e184f443fa94436ab788e1ca, type: 3}
+  sprite: {fileID: 21300000, guid: bee24f07c57157e45a946eed3bfe8b84, type: 3}
+  objectName: Cabbage Slices
   cuttingSeconds: 0
   canCut: 0
   cutsInto: {fileID: 0}
