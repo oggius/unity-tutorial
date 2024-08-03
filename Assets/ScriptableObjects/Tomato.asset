@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e1a138fec544c258062e576d4cf5a1, type: 3}
+  m_Script: {fileID: 11500000, guid: abede97ab44f244d9ac9497caf4e657f, type: 3}
   m_Name: Tomato
   m_EditorClassIdentifier: 
   prefab: {fileID: 3437737236658819098, guid: 689a6831302074dd6948111f8682b8a7, type: 3}
@@ -17,4 +17,4 @@ MonoBehaviour:
   objectName: Tomato
   cuttingSeconds: 1
   canCut: 1
-  cutsInto: {fileID: 11400000, guid: f6e55a0cc7c594f1d8d4af584202018d, type: 2}
+  cutsInto: {fileID: 11400000, guid: 54eabcc99a0534089b98250e8ee6276a, type: 2}

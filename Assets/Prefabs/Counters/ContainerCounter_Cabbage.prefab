@@ -73,7 +73,7 @@ PrefabInstance:
         type: 3}
       propertyPath: kitchenObject
       value: 
-      objectReference: {fileID: 11400000, guid: 69efddf21fa5a4886b5bb967f1479eb8,
+      objectReference: {fileID: 11400000, guid: f1c5104a6f25f4370872409fb983d234,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

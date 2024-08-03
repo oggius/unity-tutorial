@@ -14,7 +14,7 @@ public class CuttingCounter : BaseCounter
     public event EventHandler cuttingStarted;
     public event EventHandler cuttingStopped;
 
-    [SerializeField] private KitchenObjectSO cutKitchenObject;
+    private KitchenObjectSO cutKitchenObject;
 
     private bool isCutting = false;
     private float cuttingProgressSeconds;

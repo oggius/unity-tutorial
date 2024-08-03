@@ -141,6 +141,7 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
         if (Physics.Raycast(transform.position, lastInteractDirection, out interactedObject, interactionDistance, counterLayerMask)) {
             if (interactedObject.transform.TryGetComponent(out BaseCounter counter)) {
                 if (selectedCounter != counter) {
+                    Debug.Log("Selected counter");
                     SetSelectedCounter(counter);
                 }
             } else {
@@ -153,6 +154,9 @@ public class Player : MonoBehaviour, IKitchenObjectHolder {
 
     // sets selected counter
     private void SetSelectedCounter(BaseCounter counter) {
+        if (counter != null) {
+            Debug.Log("Set selected counter");
+        }
         selectedCounter = counter;
 
         selectedCounterChanged?.Invoke(this, new SelectedCounterChangedEventArgs {

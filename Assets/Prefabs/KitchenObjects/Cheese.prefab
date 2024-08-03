@@ -42,10 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3437737236658819098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22385af1bc1864156a845328237d1621, type: 3}
+  m_Script: {fileID: 11500000, guid: b2a06b4aa4add4ca7b38d4ed8efaaac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: 948b8f4cbfc37480793e2fa32c1712df, type: 2}
+  kitchenObjectSO: {fileID: 11400000, guid: 2b0be2f3b85224d12af868fddc3d9896, type: 2}
 --- !u!1001 &5537302411287564665
 PrefabInstance:
   m_ObjectHideFlags: 0

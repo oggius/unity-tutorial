@@ -41,8 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5220143231636790291}
   - component: {fileID: 3460043198350730182}
-  - component: {fileID: 3466960326903507772}
-  - component: {fileID: 6818785025921768438}
   m_Layer: 6
   m_Name: ClearCounter_BACKUP
   m_TagString: Untagged
@@ -89,34 +87,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &3466960326903507772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4808885716710691195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c62ec319d8c464822ba0608fa41667eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kitchenObject: {fileID: 0}
-  topCounterPoint: {fileID: 3361035737958705131}
---- !u!114 &6818785025921768438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4808885716710691195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ad38a88ece6456abc48625d42d9d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter: {fileID: 3466960326903507772}
-  counterVisual: {fileID: 8277854268770087159}
 --- !u!1001 &5571282174542386269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,12 +206,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5571282174542386269}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8277854268770087159 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 0004cb1e11ad014419b943c7da960724,
-    type: 3}
-  m_PrefabInstance: {fileID: 5571282174542386269}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5980792216695164587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259,6 +223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589716710238282922, guid: 0004cb1e11ad014419b943c7da960724,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4589716710238282923, guid: 0004cb1e11ad014419b943c7da960724,
         type: 3}

@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e1a138fec544c258062e576d4cf5a1, type: 3}
+  m_Script: {fileID: 11500000, guid: abede97ab44f244d9ac9497caf4e657f, type: 3}
   m_Name: Bread
   m_EditorClassIdentifier: 
   prefab: {fileID: 3437737236658819098, guid: eb2fd0fb4cf3544138cdfeb1b753217b, type: 3}
   sprite: {fileID: 21300000, guid: 77b28124b8bda494381c80bd5aa42c22, type: 3}
   objectName: Bread
-  cutInto: 0
+  cuttingSeconds: 0
+  canCut: 0
+  cutsInto: {fileID: 0}

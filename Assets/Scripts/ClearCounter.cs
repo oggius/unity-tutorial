@@ -7,6 +7,7 @@ public class ClearCounter : BaseCounter, IKitchenObjectHolder
     [SerializeField] private KitchenObjectSO kitchenObject;
 
     public override void Interact(Player player) {
+        Debug.Log("Interacted with clear counter: " + this);
         KitchenObject counterObject = GetHeldObject();
         KitchenObject playersObject = player.GetHeldObject();
         Debug.Log("Players object: " + playersObject + ", counter object: " + counterObject);

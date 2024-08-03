@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectedCounterVisual : MonoBehaviour
 {
     [SerializeField] private BaseCounter counter;
-    [SerializeField] private GameObject counterVisual;
+    [SerializeField] private GameObject selectedVisual;
 
     // Start is called before the first frame update
     private void Start()
@@ -24,10 +24,10 @@ public class SelectedCounterVisual : MonoBehaviour
     }
 
     private void Show() {
-        counterVisual.SetActive(true);
+        selectedVisual.SetActive(true);
     }
 
     private void Hide() {
-        counterVisual.SetActive(false);
+        selectedVisual.SetActive(false);
     }
 }

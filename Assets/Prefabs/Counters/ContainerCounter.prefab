@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659983458630025252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a78a3d5a2ddd4043976faee9fcf47c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b9b21c4b16c441c380a1ad49504c7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counter: {fileID: 8614575873334326839}
@@ -230,38 +230,14 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5261771210811040880, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7583332652527176846}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
---- !u!1 &4295493510122219693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7816906318471787887, guid: 9a9137fa2b035d34e881701d2c178192,
-    type: 3}
-  m_PrefabInstance: {fileID: 6334192441906748866}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7518303764084537704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192,
     type: 3}
   m_PrefabInstance: {fileID: 6334192441906748866}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7583332652527176846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7518303764084537704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ad38a88ece6456abc48625d42d9d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter: {fileID: 0}
-  counterVisual: {fileID: 4295493510122219693}
 --- !u!4 &7518303764084537705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 9a9137fa2b035d34e881701d2c178192,
@@ -373,11 +349,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2236471080204344494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b938f8ff9aa8449e08665d2dcca855c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 7859dde1363aa471287192c56a65c21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topCounterPoint: {fileID: 8291653303127108158}
-  kitchenObject: {fileID: 11400000, guid: 948b8f4cbfc37480793e2fa32c1712df, type: 2}
+  kitchenObject: {fileID: 0}
 --- !u!114 &5220568179241558517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,11 +363,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2236471080204344494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ad38a88ece6456abc48625d42d9d5e, type: 3}
+  m_Script: {fileID: 11500000, guid: f81a3064aa67549e08464accb2ad2c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counter: {fileID: 8614575873334326839}
-  counterVisual: {fileID: 7518303764084537704}
+  selectedVisual: {fileID: 7518303764084537704}
 --- !u!1 &8291653303127108158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3361035737958705131, guid: 27e83b715cf514ffca045a45870e338e,

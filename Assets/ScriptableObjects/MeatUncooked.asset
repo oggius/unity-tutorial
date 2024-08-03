@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e1a138fec544c258062e576d4cf5a1, type: 3}
+  m_Script: {fileID: 11500000, guid: abede97ab44f244d9ac9497caf4e657f, type: 3}
   m_Name: MeatUncooked
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3437737236658819098, guid: 3fb4aa55933924af2a6654e1f0287bc8, type: 3}
-  sprite: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
-  objectName: MeatUncooked
-  cutInto: 0
+  prefab: {fileID: 0}
+  sprite: {fileID: 0}
+  objectName: 
+  cuttingSeconds: 0
+  canCut: 0
+  cutsInto: {fileID: 0}

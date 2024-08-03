@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3004296580798310527}
   - component: {fileID: 8962163395499449762}
   - component: {fileID: 720778786511258250}
+  - component: {fileID: 1573916454752217371}
   m_Layer: 5
   m_Name: ProgressBarUI
   m_TagString: Untagged
@@ -118,6 +119,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cuttingCounter: {fileID: 1904148365674879559}
   barImage: {fileID: 3026719899125177596}
+--- !u!114 &1573916454752217371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4071251057048172974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2429edab1954e66bf41f0e6ba1d81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8811806210852866713
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +389,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2381679428126670634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2cb53f6c73984a5eb27fcbb8fce4c10, type: 3}
+  m_Script: {fileID: 11500000, guid: a3afbc80d14734b4c8da3e8aea2e6aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counter: {fileID: 1904148365674879559}
@@ -594,11 +607,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178704147932097443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58c1f07c4ae94e53a1a6cab3c5d5907, type: 3}
+  m_Script: {fileID: 11500000, guid: fef86f51ec94c4aaea99094efab33bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topCounterPoint: {fileID: 8954225935219154227}
-  cutKitchenObject: {fileID: 0}
 --- !u!114 &935151723788219028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,11 +620,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178704147932097443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ad38a88ece6456abc48625d42d9d5e, type: 3}
+  m_Script: {fileID: 11500000, guid: f81a3064aa67549e08464accb2ad2c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counter: {fileID: 1904148365674879559}
-  counterVisual: {fileID: 517082793639898666}
+  selectedVisual: {fileID: 517082793639898666}
 --- !u!4 &1915909616938968779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5220143231636790291, guid: 27e83b715cf514ffca045a45870e338e,
