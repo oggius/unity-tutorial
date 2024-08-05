@@ -6,7 +6,7 @@ public abstract class BaseCounter : MonoBehaviour, IKitchenObjectHolder
 {
     [SerializeField] private GameObject topCounterPoint;
 
-    private KitchenObject placedObject;
+    protected KitchenObject heldObject;
 
     public abstract void Interact(Player player);
 
@@ -15,18 +15,18 @@ public abstract class BaseCounter : MonoBehaviour, IKitchenObjectHolder
     }
 
     public void ObtainKitchenObject(KitchenObject kitchenObject) {
-        this.placedObject = kitchenObject;
+        heldObject = kitchenObject;
     }
 
     public KitchenObject GetHeldObject() {
-        return placedObject;
+        return heldObject;
     }
 
     public void ReleaseHeldObject() {
-        this.placedObject = null;
+        heldObject = null;
     }
 
     public bool HasHeldObject() {
-        return placedObject != null;
+        return heldObject != null;
     }
 }

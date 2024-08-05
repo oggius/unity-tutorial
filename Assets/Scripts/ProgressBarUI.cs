@@ -5,26 +5,33 @@ using UnityEngine.UI;
 
 public class ProgressBarUI : MonoBehaviour
 {
-    [SerializeField] private CuttingCounter cuttingCounter;
+    private IProgressible progressible;
+
+    [SerializeField] private GameObject progressibleObject;
     [SerializeField] private Image barImage;
 
     void Start()
     {
-        cuttingCounter.cuttingProgressChanged += CuttingCounter_cuttingProgressChanged;
-        cuttingCounter.cuttingStopped += CuttingCounter_cuttingStopped;
         Hide();
+        // workaround for issue of Unity not supporing interface as SerializedField
+        progressible = progressibleObject.GetComponent<IProgressible>();
+        if (progressible == null) {
+            Debug.LogError("Referenced object does not implement IProgressible");
+            return;
+        }
+        
+        progressible.progressChanged += Progressible_progressChanged;
     }
 
-    private void CuttingCounter_cuttingStopped(object sender, System.EventArgs e)
-    {
-        Hide();
-    }
-
-    private void CuttingCounter_cuttingProgressChanged(object sender, CuttingCounter.CuttingProgressChangedEventArgs e)
+    private void Progressible_progressChanged(object sender, IProgressible.ProgressChangedEventArgs e)
     {
         float progressNormalized = e.currentProgress / e.maxProgress;
         barImage.fillAmount = progressNormalized;
-        Show();
+        if (progressNormalized < 1) {
+            Show();
+        } else {
+            Hide();
+        }
     }
 
     public void Hide() {

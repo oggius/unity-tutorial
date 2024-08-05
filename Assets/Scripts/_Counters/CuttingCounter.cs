@@ -1,20 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter, IProgressible
 {
-    public event EventHandler<CuttingProgressChangedEventArgs> cuttingProgressChanged;
-    public class CuttingProgressChangedEventArgs : EventArgs {
-        public float currentProgress;
-        public float maxProgress;
-    }
-
     public event EventHandler cuttingStarted;
     public event EventHandler cuttingStopped;
-
-    private KitchenObjectSO cutKitchenObject;
+    public event EventHandler<IProgressible.ProgressChangedEventArgs> progressChanged;
 
     private bool isCutting = false;
     private float cuttingProgressSeconds;
@@ -33,9 +27,6 @@ public class CuttingCounter : BaseCounter
         if (playerObject != null && playerObject.IsCuttable()) {
             Debug.Log("Cutting counter obtains: " + playerObject);
             playerObject.ChangeHolder(this);
-            //playerObject.DestroySelf();
-
-            //KitchenObject.SpawnKitchenObject(cutKitchenObject, this);
 
             StartCutting(playerObject);
         }
@@ -76,7 +67,7 @@ public class CuttingCounter : BaseCounter
     {
         if (isCutting) {
             cuttingProgressSeconds += Time.deltaTime;
-            cuttingProgressChanged?.Invoke(this, new CuttingProgressChangedEventArgs {
+            progressChanged?.Invoke(this, new IProgressible.ProgressChangedEventArgs {
                 currentProgress = cuttingProgressSeconds, maxProgress = cuttingMaxSeconds
             });
 
