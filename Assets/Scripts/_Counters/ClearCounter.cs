@@ -12,20 +12,48 @@ public class ClearCounter : BaseCounter, IKitchenObjectHolder
         KitchenObject playersObject = player.GetHeldObject();
         Debug.Log("Players object: " + playersObject + ", counter object: " + counterObject);
 
-        if (counterObject != null && playersObject != null) {
-            // swap objects
-            counterObject.SetHolder(player);
-            playersObject.SetHolder(this);
-        } else {
-            if (counterObject != null) {
-                Debug.Log("Player obtains: " + counterObject);
-                counterObject.ChangeHolder(player);
+        if (playersObject != null) {
+            // player holds something
+            if (playersObject is PlateKitchenObject) {
+                // player holds the plate
+                if (counterObject != null) {
+                    if (AddIngredientToPlate((PlateKitchenObject) playersObject, counterObject.GetKitchenObjectSO())) {
+                        counterObject.DestroySelf(); 
+                    }
+                } else {
+                    playersObject.ChangeHolder(this);
+                }
+            } else {
+                // player holds the product
+                if (counterObject != null) {
+                    if (counterObject is PlateKitchenObject) {
+                        if (AddIngredientToPlate((PlateKitchenObject) counterObject, playersObject.GetKitchenObjectSO())) {
+                            playersObject.DestroySelf();
+                        }
+                    } else {
+                        SwapObjects(playersObject, counterObject, player, this);
+                    }
+                } else {
+                    playersObject.ChangeHolder(this);
+                }
             }
-
-            if (playersObject != null) {
-                Debug.Log("Counter obtains: " + playersObject);
-                playersObject.ChangeHolder(this);
-            }
+        } else if (counterObject != null) {
+            counterObject.ChangeHolder(player);
         }
+    }
+
+    private bool AddIngredientToPlate(PlateKitchenObject plate, KitchenObjectSO ingredient) {
+        Debug.Log("Trying to add ingredient to plate");
+        if (!plate.CanAddIngredient(ingredient)) {
+            Debug.Log("Ingredient is not allowed");
+            return false;
+        }
+
+        return plate.AddIngredient(ingredient);
+    }
+
+    private void SwapObjects(KitchenObject playersObject, KitchenObject counterObject, Player player, ClearCounter counter) {
+        playersObject.SetHolder(counter);
+        counterObject.SetHolder(player);
     }
 }

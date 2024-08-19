@@ -14,7 +14,7 @@ public class KitchenObject : MonoBehaviour
 
     public void ChangeHolder(IKitchenObjectHolder newHolder) {
         if (newHolder.HasHeldObject()) {
-            Debug.Log("New holder already has kitchen object " + newHolder.GetHeldObject());
+            Debug.LogError("New holder already has kitchen object " + newHolder.GetHeldObject());
             return;
         }
 
@@ -52,7 +52,7 @@ public class KitchenObject : MonoBehaviour
     public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectHolder holder) {
         GameObject kitchenObjectInstance = Instantiate(kitchenObjectSO.prefab);
         KitchenObject kitchenObject = kitchenObjectInstance.GetComponent<KitchenObject>();
-        kitchenObject.SetHolder(holder);
+        kitchenObject.ChangeHolder(holder);
 
         return kitchenObject;
     }

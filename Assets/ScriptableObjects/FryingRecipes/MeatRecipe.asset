@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MeatRecipe
   m_EditorClassIdentifier: 
   uncookedProduct: {fileID: 11400000, guid: 97c44f4f0408545edb49a805e0efbec7, type: 2}
-  friedProduct: {fileID: 0}
-  burntProduct: {fileID: 0}
-  fryingTime: 0
-  burningTime: 0
+  friedProduct: {fileID: 11400000, guid: 7ce49fd91f67e46228162b8a43020725, type: 2}
+  burnedProduct: {fileID: 11400000, guid: 5e2986d0cc0194fb89382c0e67c6adcc, type: 2}
+  fryingTime: 3
+  burningTime: 5
