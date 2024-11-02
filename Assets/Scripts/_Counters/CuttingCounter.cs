@@ -32,8 +32,16 @@ public class CuttingCounter : BaseCounter, IProgressible
         }
 
         if (counterObject != null) {
-            Debug.Log("Player grabs: " + counterObject);
-            counterObject.ChangeHolder(player);
+            if (playerObject is PlateKitchenObject plate) {
+                Debug.Log("Player holds the plate, trying to add cut ingredient: " + counterObject);
+                if (TryAddIngredientToPlate(plate, counterObject)) {
+                    Debug.Log("Ingredient added, destroying object");
+                    counterObject.DestroySelf();
+                }
+            } else {
+                Debug.Log("Player grabs: " + counterObject);
+                counterObject.ChangeHolder(player);
+            }
         }
     }
 
@@ -75,5 +83,21 @@ public class CuttingCounter : BaseCounter, IProgressible
                 StopCutting();
             }
         }
+    }
+
+    private bool TryAddIngredientToPlate(PlateKitchenObject plate, KitchenObject ingredientObject) {
+        Debug.Log("Trying to add ingredient to plate");
+
+        if (AddIngredientToPlate(plate, ingredientObject.GetKitchenObjectSO())) 
+        {
+            return true;
+        }
+
+        Debug.Log("Ingredient is not allowed");
+        return false;
+    }
+
+    private bool AddIngredientToPlate(PlateKitchenObject plate, KitchenObjectSO ingredient) {
+        return plate.CanAddIngredient(ingredient) && plate.AddIngredient(ingredient);
     }
 }

@@ -30,30 +30,37 @@ public class StoveCounter : BaseCounter, IProgressible
 
     public override void Interact(Player player)
     {
-        var playerProduct = player.GetHeldObject();
-        var counterProduct = GetHeldObject();
+        var playerObject = player.GetHeldObject();
+        var counterObject = GetHeldObject();
 
-        Debug.Log("Player product: " + playerProduct + ", counter product: " + counterProduct);
+        Debug.Log("Player object: " + playerObject + ", counter object: " + counterObject);
         
         if (!CanInteract()) {
             Debug.Log("Frying in progress. No actions allowed");
             return;
         }
 
-        if (playerProduct != null) {
-            var recipe = GetRecipeForProduct(playerProduct);
+        if (playerObject != null) {
+            var recipe = GetRecipeForProduct(playerObject);
             if (recipe != null) {
-                playerProduct.ChangeHolder(this);
+                playerObject.ChangeHolder(this);
                 StartCooking(recipe);
             } else {
                 Debug.Log("Can not process product, no matching recipe");
             }
         } 
         
-        if (counterProduct != null) {
-            Debug.Log("Passing counter product: " + counterProduct);
-            counterProduct.ChangeHolder(player);
-            StopCooking();
+        if (counterObject != null) {
+            if (playerObject is PlateKitchenObject plate) {
+                if (TryAddIngredientToPlate(plate, counterObject)) {
+                    counterObject.DestroySelf();
+                    StopCooking();
+                }
+            } else {
+                Debug.Log("Passing counter product: " + counterObject);
+                counterObject.ChangeHolder(player);
+                StopCooking();
+            }
         }
     }
 
@@ -149,5 +156,21 @@ public class StoveCounter : BaseCounter, IProgressible
 
     private bool CanInteract() {
         return currentState != FryingState.Frying;
+    }
+
+    private bool TryAddIngredientToPlate(PlateKitchenObject plate, KitchenObject ingredientObject) {
+        Debug.Log("Trying to add ingredient to plate");
+
+        if (AddIngredientToPlate(plate, ingredientObject.GetKitchenObjectSO())) 
+        {
+            return true;
+        }
+
+        Debug.Log("Ingredient is not allowed");
+        return false;
+    }
+
+    private bool AddIngredientToPlate(PlateKitchenObject plate, KitchenObjectSO ingredient) {
+        return plate.CanAddIngredient(ingredient) && plate.AddIngredient(ingredient);
     }
 }
